@@ -18,4 +18,16 @@ function onReady() {
     });
 
     // TODO Add ajax request for /songs and display on DOM
+    $.ajax({
+        type: 'GET',
+        url: '/songs'
+    }).then(function (response){
+        for (let song of response)
+        $('#songTableBody').append(`
+            <tr>
+                <td>${song.title}</td>
+                <td>${song.artist}</td>
+            </tr>
+        `)
+    })
 }
